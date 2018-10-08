@@ -24,6 +24,7 @@ namespace QAEngine.Web.Controllers
             return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = id }));
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody]CreateCustomerCommand command)
         {
             return Ok(await Mediator.Send(command));
