@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
+    <PackageReference Include="MediatR" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QAEngine.Domain\QAEngine.Domain.csproj" />
+    <ProjectReference Include="..\QAEngine.Persistence\QAEngine.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
