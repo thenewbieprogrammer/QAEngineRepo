@@ -9,29 +9,37 @@ using QAEngine.Application.Customers.Models;
 using QAEngine.Application.Customers.Query;
 namespace QAEngine.Web.Controllers
 {
+    [Route("[controller]/[action]")]
+
     public class CustomerController : BaseController
     {
+        // start page of customer!
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet()]
-        public Task<List<CustomerListModel>> Get()
+        public Task<List<CustomerListModel>> ViewCustomers()
         {
             return Mediator.Send(new GetCustomerListQuery());
         }
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> FindACustomer(string id)
         {
             return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = id }));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]CreateCustomerCommand command)
+        public async Task<IActionResult> NewCustomer([FromBody]CreateCustomerCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, [FromBody]UpdateCustomerCommand command)
+        public async Task<IActionResult> UpdateCustomerDetails(string id, [FromBody]UpdateCustomerCommand command)
         {
             if (command == null || command.Id != id)
             {
@@ -42,7 +50,7 @@ namespace QAEngine.Web.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> DeleteCustomer(string id)
         {
             await Mediator.Send(new DeleteCustomerCommand { Id = id });
             return NoContent();

@@ -10,9 +10,6 @@ using QAEngine.Domain.Entities;
 using QAEngine.Persistence;
 
 
-
-
-
 namespace QAEngine.Application.Customers.Query
 {
     public class GetCustomerModelQueryHandler : IRequestHandler<GetCustomerModelQuery, CustomerModel>

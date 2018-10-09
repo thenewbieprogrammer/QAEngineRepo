@@ -18,7 +18,7 @@ namespace QAEngine.Application.Customers.Command
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
-        public DateTime? AccountCreated { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime AccountCreated { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

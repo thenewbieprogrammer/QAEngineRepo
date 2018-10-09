@@ -15,8 +15,8 @@ namespace QAEngine.Persistence
 
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Note> Notes { get; set; }
-        public DbSet<NoteDescription> NoteDescriptions { get; set; }
+        //public DbSet<Note> Notes { get; set; }
+        //public DbSet<NoteDescription> NoteDescriptions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -12,6 +12,7 @@ namespace QAEngine.Web
 {
     public class Program
     {
+        // entry point to the entire application.
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();

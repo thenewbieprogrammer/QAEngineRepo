@@ -14,6 +14,7 @@ using QAEngine.Web.Services;
 using MediatR;
 using MediatR.Pipeline;
 using System.Reflection;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace QAEngine.Web
 {
@@ -30,7 +31,8 @@ namespace QAEngine.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
+                ));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -52,6 +54,8 @@ namespace QAEngine.Web
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true} );
+
             }
             else
             {
