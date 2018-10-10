@@ -37,7 +37,7 @@ namespace QAEngine.Application.Customers.Command
 
             entity.Title = request.Title;
             entity.FirstName = request.FirstName;
-            entity.Lastname = request.Lastname;
+            entity.LastName = request.Lastname;
             entity.Address = request.Address;
             entity.City = request.City;
             entity.Region = request.Region;

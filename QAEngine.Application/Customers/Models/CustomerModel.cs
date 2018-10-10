@@ -33,7 +33,7 @@ namespace QAEngine.Application.Customers.Models
                     Id = customer.CustomerId,
                     Title = customer.Title,
                     FirstName = customer.FirstName,
-                    Lastname = customer.Lastname,
+                    Lastname = customer.LastName,
                     Address = customer.Address,
                     City = customer.City,
                     Region = customer.Region,

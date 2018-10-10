@@ -30,7 +30,13 @@ namespace QAEngine.Persistence
 
         private void SeedCustomers(QAEngineDbContext context)
         {
-            throw new NotImplementedException();
+            var customer = new[]
+            {
+               new Customer { CustomerId = "993HAGH", Title = "Mr", FirstName = "Bilaal", LastName = "Nadeem", Address="88 Meir Road", City = "Stoke-On-Trent", Region = "Staffordshire", PostalCode = "ST3 7JB", Country = "United Kingdom", Phone = "07702 575 157", AccountCreated = DateTime.Parse("October 10 2018") , DateOfBirth = DateTime.Parse("September 18 1995")}
+            };
+
+            context.Customers.AddRange(customer);
+            context.SaveChanges();
         }
     }
 }

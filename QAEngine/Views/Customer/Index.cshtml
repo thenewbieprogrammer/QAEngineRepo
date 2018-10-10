@@ -2,55 +2,64 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
+<h1>dev.</h1>
 
-<h1> Customer Index Page</h1>
+<!--    SEARCH CONTACT. ADD, EDIT, DELETE CONTACT. -->
+<div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
 
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-
-                <li class="active"><a href="#">View</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-
-                <li class="dropdown">
-                    <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
- 
-
-                    </ul>
-                </li>
-
-                <li class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div><!-- /input-group -->
-                </li>
-            </ul>
+            <div id="navbar" class="navbar-collapse collapse">
 
 
-        </div><!--/.nav-collapse -->
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" style="width:500px;" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default btn-lg">
+                            <a asp-area="" asp-controller="Home" asp-action="About"><span class="glyphicon glyphicon-search"></span></a>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li style="margin-right: 10px; margin-top: 7px;">
+                        <button type="button" class="btn btn-default btn-lg" id="addNewCustomer">
+                            <a asp-area="" asp-controller="Customer" asp-action="NewCustomer"><span class="glyphicon glyphicon-plus"></span></a>
+                        </button>
+                    </li>
+
+                    <li style="margin-top: 7px;">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a asp-area="" asp-controller="Home" asp-action="About">Edit</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="About">Delete</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+
+                </ul>
 
 
+            </div><!--/.nav-collapse -->
 
-    </div><!--/.container-fluid -->
-</nav>
+        </div><!--/.container-fluid -->
+    </nav>
+</div>
 
 

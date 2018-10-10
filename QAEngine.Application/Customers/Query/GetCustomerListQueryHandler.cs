@@ -26,7 +26,7 @@ namespace QAEngine.Application.Customers.Query
                 new CustomerListModel
                 {
                     Id = c.CustomerId,
-                    Name = c.FirstName + " " + c.Lastname
+                    Name = c.FirstName + " " + c.LastName
                 }).ToListAsync(cancellationToken);
         }
 

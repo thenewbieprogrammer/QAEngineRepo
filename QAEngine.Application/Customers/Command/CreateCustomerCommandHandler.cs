@@ -26,7 +26,7 @@ namespace QAEngine.Application.Customers.Command
                 CustomerId = request.Id,
                 Title = request.Title,
                 FirstName = request.FirstName,
-                Lastname = request.Lastname,
+                LastName = request.Lastname,
                 Address = request.Address,
                 City = request.City,
                 Region = request.Region,

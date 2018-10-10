@@ -32,10 +32,17 @@ namespace QAEngine.Web.Controllers
             return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = id }));
         }
 
+        // I don't know if the below action result actually does anything of significance. Find out if you can return a view whilst sending a STATUS OK 200 CODE!!
+        public IActionResult NewCustomer()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> NewCustomer([FromBody]CreateCustomerCommand command)
         {
             return Ok(await Mediator.Send(command));
+              
         }
 
         [HttpPut("{id}")]
