@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!DOCTYPE html>
+<html>
+
+    <h1>dev.</h1>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - QAEngine</title>
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+    </head>
+
+
+    <body>
+        <div>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div id="navbar" class="navbar-collapse collapse">
+
+
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" style="width:300px;" placeholder="Search">
+                                </div>
+                                <button type="submit" class="btn btn-default btn-lg">
+                                    <a asp-area="" asp-controller="Home" asp-action="About"><span class="glyphicon glyphicon-search"></span></a>
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li style="margin-right: 10px; margin-top: 9px;">
+                                <button type="button" class="btn btn-default" id="addNewCustomer">
+                                    <a asp-area="" asp-controller="Customer" asp-action="NewCustomer"><span class="glyphicon glyphicon-plus"></span></a>
+                                </button>
+                            </li>
+
+                            <li style="margin-top: 9px;">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a asp-area="" asp-controller="Home" asp-action="About">Edit</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="About">Delete</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+
+                    </div><!--/.nav-collapse -->
+
+                </div><!--/.container-fluid -->
+            </nav>
+        </div>
+
+
+        @*@await Html.PartialAsync("NewCustomer.cshtml")*@
+    </body>
+</html>

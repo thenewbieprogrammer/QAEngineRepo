@@ -47,7 +47,7 @@ namespace QAEngine.Web
 
             services.AddMvc();
 
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 

@@ -23,6 +23,6 @@ namespace QAEngine.Persistence
         {
             modelBuilder.ApplyAllConfigurations();
         }
-
+        
     }
 }

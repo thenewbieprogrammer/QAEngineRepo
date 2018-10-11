@@ -26,7 +26,7 @@ namespace QAEngine.Application.Customers.Command
                 CustomerId = request.Id,
                 Title = request.Title,
                 FirstName = request.FirstName,
-                LastName = request.Lastname,
+                LastName = request.LastName,
                 Address = request.Address,
                 City = request.City,
                 Region = request.Region,
@@ -34,7 +34,7 @@ namespace QAEngine.Application.Customers.Command
                 Country = request.Country,
                 Phone = request.Phone,
                 AccountCreated = request.AccountCreated,
-                DateOfBirth = request.DateOfBirth
+                DateOfBirth = request.DateOfBirth.Date
             };
 
             _context.Customers.Add(entity);

@@ -35,7 +35,7 @@ namespace QAEngine.Application.Customers.Query
                 Id = entity.CustomerId,
                 Title = entity.Title,
                 FirstName = entity.FirstName,
-                Lastname = entity.LastName,
+                LastName = entity.LastName,
                 Address = entity.Address,
                 City = entity.City,
                 Region = entity.Region,

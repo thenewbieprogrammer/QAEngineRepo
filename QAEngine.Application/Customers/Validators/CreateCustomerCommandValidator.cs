@@ -16,7 +16,7 @@ namespace QAEngine.Application.Customers.Validators
 
             RuleFor(x => x.Title).MaximumLength(5);
             RuleFor(x => x.FirstName).MaximumLength(10);
-            RuleFor(x => x.Lastname).MaximumLength(10);
+            RuleFor(x => x.LastName).MaximumLength(10);
             RuleFor(x => x.Address).MaximumLength(45);
             RuleFor(x => x.City).MaximumLength(15);
             RuleFor(x => x.Region).MaximumLength(20);

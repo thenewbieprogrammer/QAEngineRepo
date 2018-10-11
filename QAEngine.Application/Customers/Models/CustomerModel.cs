@@ -13,7 +13,7 @@ namespace QAEngine.Application.Customers.Models
         public string Id { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Region { get; set; }
@@ -33,7 +33,7 @@ namespace QAEngine.Application.Customers.Models
                     Id = customer.CustomerId,
                     Title = customer.Title,
                     FirstName = customer.FirstName,
-                    Lastname = customer.LastName,
+                    LastName = customer.LastName,
                     Address = customer.Address,
                     City = customer.City,
                     Region = customer.Region,
@@ -46,6 +46,7 @@ namespace QAEngine.Application.Customers.Models
                 };
             }
         }
+
 
         public static CustomerModel Create(Customer customer)
         {

@@ -7,14 +7,18 @@ using QAEngine.Web.Infrastructure;
 using QAEngine.Application.Customers.Command;
 using QAEngine.Application.Customers.Models;
 using QAEngine.Application.Customers.Query;
+using Microsoft.AspNetCore.Authorization;
+
+
+
 namespace QAEngine.Web.Controllers
 {
     [Route("[controller]/[action]")]
 
     public class CustomerController : BaseController
     {
-        // start page of customer!
-        public IActionResult Index()
+        [Authorize]
+        public IActionResult CustomerIndex()
         {
             return View();
         }
@@ -33,16 +37,21 @@ namespace QAEngine.Web.Controllers
         }
 
         // I don't know if the below action result actually does anything of significance. Find out if you can return a view whilst sending a STATUS OK 200 CODE!!
+        // Below is an example of "NewCustomer" action with a view and a task. 
+        [Authorize]
         public IActionResult NewCustomer()
         {
+
             return View();
         }
 
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> NewCustomer([FromBody]CreateCustomerCommand command)
+        //noteToSelf = FromForm means from the bloody form not [FromBody]
+        public async Task<IActionResult> NewCustomer([FromForm]CreateCustomerCommand command)
         {
             return Ok(await Mediator.Send(command));
-              
+            
         }
 
         [HttpPut("{id}")]
@@ -52,6 +61,7 @@ namespace QAEngine.Web.Controllers
             {
                 return BadRequest();
             }
+            
 
             return Ok(await Mediator.Send(command));
         }

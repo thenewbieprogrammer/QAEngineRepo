@@ -1,19 +1,280 @@
-﻿
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
+@model QAEngine.Application.Customers.Command.CreateCustomerCommand
 
 
-<html>
 
-<body>
+<!-- A select list for all countries -->
+@{ 
+    var selectList = new SelectList(
+        new List<SelectListItem>
+    {
+        new SelectListItem {Text="Afghanistan", Value="Afghanistan"},
+        new SelectListItem {Text="Albania", Value="Albania"},
+        new SelectListItem {Text="Algeria", Value="Algeria"},
+        new SelectListItem {Text="American Samoa", Value="American Samoa"},
+        new SelectListItem {Text="Andorra", Value="Andorra"},
+        new SelectListItem {Text="Angola", Value="Angola"},
+        new SelectListItem {Text="Anguilla", Value="Anguilla"},
+        new SelectListItem {Text="Antarctica", Value="Antarctica"},
+        new SelectListItem {Text="Antigua and Barbuda", Value="Antigua and Barbuda"},
+        new SelectListItem {Text="Argentina", Value="Argentina"},
+        new SelectListItem {Text="Armenia", Value="Armenia"},
+        new SelectListItem {Text="Aruba", Value="Aruba"},
+        new SelectListItem {Text="Australia", Value="Australia"},
+        new SelectListItem {Text="Austria", Value="Austria"},
+        new SelectListItem {Text="Azerbaijan", Value="Azerbaijan"},
+        new SelectListItem {Text="Bahamas", Value="Bahamas"},
+        new SelectListItem {Text="Bahrain", Value="Bahrain"},
+        new SelectListItem {Text="Bangladesh", Value="Bangladesh"},
+        new SelectListItem {Text="Barbados", Value="Barbados"},
+        new SelectListItem {Text="Belarus", Value="Belarus"},
+        new SelectListItem {Text="Belgium", Value="Belgium"},
+        new SelectListItem {Text="Belize", Value="Belize"},
+        new SelectListItem {Text="Benin", Value="Benin"},
+        new SelectListItem {Text="Bermuda", Value="Bermuda"},
+        new SelectListItem {Text="Bhutan", Value="Bhutan"},
+        new SelectListItem {Text="Bolivia, Plurinational State of", Value="Bolivia, Plurinational State of"},
+        new SelectListItem {Text="Bonaire, Sint Eustatius and Saba", Value="Bonaire, Sint Eustatius and Saba"},
+        new SelectListItem {Text="Bosnia and Herzegovina", Value="Bosnia and Herzegovina"},
+        new SelectListItem {Text="Botswana", Value="Botswana"},
+        new SelectListItem {Text="Bouvet Island", Value="Bouvet Island"},
+        new SelectListItem {Text="Brazil", Value="Brazil"},
+        new SelectListItem {Text="British Indian Ocean Territory", Value="British Indian Ocean Territory"},
+        new SelectListItem {Text="Brunei Darussalam", Value="Brunei Darussalam"},
+        new SelectListItem {Text="Bulgaria", Value="Bulgaria"},
+        new SelectListItem {Text="Burkina", Value="Burkina"},
+        new SelectListItem {Text="Burundi", Value="Burundi"},
+        new SelectListItem {Text="Cambodia", Value="Cambodia"},
+        new SelectListItem {Text="Cameroon", Value="Cameroon"},
+        new SelectListItem {Text="Canada", Value="Canada"},
+        new SelectListItem {Text="Cape Verde", Value="Cape Verde"},
+        new SelectListItem {Text="Cayman Islands", Value="Cayman Islands"},
+        new SelectListItem {Text="Central African Republic", Value="Central African Republic"},
+        new SelectListItem {Text="Chad", Value="Chad"},
+        new SelectListItem {Text="Chile", Value="Chile"},
+        new SelectListItem {Text="China", Value="China"},
+        new SelectListItem {Text="Christmas Island", Value="Christmas Island"},
+        new SelectListItem {Text="Cocos (Keeling) Islands", Value="Cocos (Keeling) Islands"},
+        new SelectListItem {Text="Colombia", Value="Colombia"},
+        new SelectListItem {Text="Comoros", Value="Comoros"},
+        new SelectListItem {Text="Congo", Value="Congo"},
+        new SelectListItem {Text="Congo, the Democratic Republic of the", Value="Congo, the Democratic Republic of the"},
+        new SelectListItem {Text="Cook Islands", Value="Cook Islands"},
+        new SelectListItem {Text="Costa Rica", Value="Costa Rica"},
+        new SelectListItem {Text="Côte d'Ivoire", Value="Côte d'Ivoire"},
+        new SelectListItem {Text="Croatia", Value="Croatia"},
+        new SelectListItem {Text="Cuba", Value="Cuba"},
+        new SelectListItem {Text="Curaçao", Value="Curaçao"},
+        new SelectListItem {Text="Cyprus", Value="Cyprus"},
+        new SelectListItem {Text="Czech Republic", Value="Czech Republic"},
+        new SelectListItem {Text="Denmark", Value="Denmark"},
+        new SelectListItem {Text="Djibouti", Value="Djibouti"},
+        new SelectListItem {Text="Dominica", Value="Dominica"},
+        new SelectListItem {Text="Dominican Republic", Value="Dominican Republic"},
+        new SelectListItem {Text="Ecuador", Value="Ecuador"},
+        new SelectListItem {Text="Egypt", Value="Egypt"},
+        new SelectListItem {Text="El Salvador", Value="El Salvador"},
+        new SelectListItem {Text="Equatorial Guinea", Value="Equatorial Guinea"},
+        new SelectListItem {Text="Eritrea", Value="Eritrea"},
+        new SelectListItem {Text="Estonia", Value="Estonia"},
+        new SelectListItem {Text="Ethiopia", Value="Ethiopia"},
+        new SelectListItem {Text="Falkland Islands (Malvinas)", Value="Falkland Islands (Malvinas)"},
+        new SelectListItem {Text="Faroe Islands", Value="Faroe Islands"},
+        new SelectListItem {Text="Fiji", Value="Fiji"},
+        new SelectListItem {Text="Finland", Value="Finland"},
+        new SelectListItem {Text="France", Value="France"},
+        new SelectListItem {Text="French Guiana", Value="French Guiana"},
+        new SelectListItem {Text="French Polynesia", Value="French Polynesia"},
+        new SelectListItem {Text="French Southern Territories", Value="French Southern Territories"},
+        new SelectListItem {Text="Gabon", Value="Gabon"},
+        new SelectListItem {Text="Gambia", Value="Gambia"},
+        new SelectListItem {Text="Georgia", Value="Georgia"},
+        new SelectListItem {Text="Germany", Value="Germany"},
+        new SelectListItem {Text="Ghana", Value="Ghana"},
+        new SelectListItem {Text="Gibraltar", Value="Gibraltar"},
+        new SelectListItem {Text="Greece", Value="Greece"},
+        new SelectListItem {Text="Greenland", Value="Greenland"},
+        new SelectListItem {Text="Grenada", Value="Grenada"},
+        new SelectListItem {Text="Guadeloupe", Value="Guadeloupe"},
+        new SelectListItem {Text="Guam", Value="Guam"},
+        new SelectListItem {Text="Guatemala", Value="Guatemala"},
+        new SelectListItem {Text="Guernsey", Value="Guernsey"},
+        new SelectListItem {Text="Guinea", Value="Guinea"},
+        new SelectListItem {Text="Guinea-Bissau", Value="Guinea-Bissau"},
+        new SelectListItem {Text="Guyana", Value="Guyana"},
+        new SelectListItem {Text="Haiti", Value="Haiti"},
+        new SelectListItem {Text="Heard Island and McDonald Islands", Value="Heard Island and McDonald Islands"},
+        new SelectListItem {Text="Holy See (Vatican City State)", Value="Holy See (Vatican City State)"},
+        new SelectListItem {Text="Honduras", Value="Honduras"},
+        new SelectListItem {Text="Hong Kong", Value="Hong Kong"},
+        new SelectListItem {Text="Hungary", Value="Hungary"},
+        new SelectListItem {Text="Iceland", Value="Iceland"},
+        new SelectListItem {Text="India", Value="India"},
+        new SelectListItem {Text="Indonesia", Value="Indonesia"},
+        new SelectListItem {Text="Iran, Islamic Republic of", Value="Iran, Islamic Republic of"},
+        new SelectListItem {Text="Iraq", Value="Iraq"},
+        new SelectListItem {Text="Ireland", Value="Ireland"},
+        new SelectListItem {Text="Isle of Man", Value="Isle of Man"},
+        new SelectListItem {Text="Israel", Value="Israel"},
+        new SelectListItem {Text="Italy", Value="Italy"},
+        new SelectListItem {Text="Jamaica", Value="Jamaica"},
+        new SelectListItem {Text="Japan", Value="Japan"},
+        new SelectListItem {Text="Jersey", Value="Jersey"},
+        new SelectListItem {Text="Jordan", Value="Jordan"},
+        new SelectListItem {Text="Kazakhstan", Value="Kazakhstan"},
+        new SelectListItem {Text="Kenya", Value="Kenya"},
+        new SelectListItem {Text="Kiribati", Value="Kiribati"},
+        new SelectListItem {Text="Korea, Democratic People's Republic of", Value="Korea, Democratic People's Republic of"},
+        new SelectListItem {Text="Korea, Republic of", Value="Korea, Republic of"},
+        new SelectListItem {Text="Kuwait", Value="Kuwait"},
+        new SelectListItem {Text="Kyrgyzstan", Value="Kyrgyzstan"},
+        new SelectListItem {Text="Lao People's Democratic Republic", Value="Lao People's Democratic Republic"},
+        new SelectListItem {Text="Latvia", Value="Latvia"},
+        new SelectListItem {Text="Lebanon", Value="Lebanon"},
+        new SelectListItem {Text="Lesotho", Value="Lesotho"},
+        new SelectListItem {Text="Liberia", Value="Liberia"},
+                new SelectListItem {Text="Libya", Value="Libya"},
+        new SelectListItem {Text="Liechtenstein", Value="Liechtenstein"},
+        new SelectListItem {Text="Lithuania", Value="Lithuania"},
+        new SelectListItem {Text="Luxembourg", Value="Luxembourg"},
+        new SelectListItem {Text="Macao", Value="Macao"},
+        new SelectListItem {Text="Macedonia, the former Yugoslav Republic of", Value="Macedonia, the former Yugoslav Republic of"},
+        new SelectListItem {Text="Madagascar", Value="Madagascar"},
+        new SelectListItem {Text="Malawi", Value="Malawi"},
+        new SelectListItem {Text="Malaysia", Value="Malaysia"},
+        new SelectListItem {Text="Maldives", Value="Maldives"},
+        new SelectListItem {Text="Mali", Value="Mali"},
+        new SelectListItem {Text="Malta", Value="Malta"},
+        new SelectListItem {Text="Marshall Islands", Value="Marshall Islands"},
+        new SelectListItem {Text="Martinique", Value="Martinique"},
+        new SelectListItem {Text="Mauritania", Value="Mauritania"},
+        new SelectListItem {Text="Mauritius", Value="Mauritius"},
+        new SelectListItem {Text="Mayotte", Value="Mayotte"},
+        new SelectListItem {Text="Mexico", Value="Mexico"},
+        new SelectListItem {Text="Micronesia, Federated States of", Value="Micronesia, Federated States of"},
+        new SelectListItem {Text="Moldova, Republic of", Value="Moldova, Republic of"},
+        new SelectListItem {Text="Monaco", Value="Monaco"},
+        new SelectListItem {Text="Mongolia", Value="Mongolia"},
+        new SelectListItem {Text="Montenegro", Value="Montenegro"},
+        new SelectListItem {Text="Montserrat", Value="Montserrat"},
+        new SelectListItem {Text="Morocco", Value="Morocco"},
+        new SelectListItem {Text="Mozambique", Value="Mozambique"},
+        new SelectListItem {Text="Myanmar", Value="Myanmar"},
+        new SelectListItem {Text="Namibia", Value="Namibia"},
+        new SelectListItem {Text="Nauru", Value="Nauru"},
+        new SelectListItem {Text="Nepal", Value="Nepal"},
+        new SelectListItem {Text="Netherlands", Value="Netherlands"},
+        new SelectListItem {Text="New Caledonia", Value="New Caledonia"},
+        new SelectListItem {Text="New Zealand", Value="New Zealand"},
+        new SelectListItem {Text="Nicaragua", Value="Nicaragua"},
+        new SelectListItem {Text="Niger", Value="Niger"},
+        new SelectListItem {Text="Nigeria", Value="Nigeria"},
+        new SelectListItem {Text="Niue", Value="Niue"},
+        new SelectListItem {Text="Norfolk Island", Value="Norfolk Island"},
+        new SelectListItem {Text="Northern Mariana Islands", Value="Northern Mariana Islands"},
+        new SelectListItem {Text="Norway", Value="Norway"},
+        new SelectListItem {Text="Oman", Value="Oman"},
+        new SelectListItem {Text="Pakistan", Value="Pakistan"},
+        new SelectListItem {Text="Palau", Value="Palau"},
+        new SelectListItem {Text="Palestinian Territory, Occupied", Value="Palestinian Territory, Occupied"},
+        new SelectListItem {Text="Panama", Value="Panama"},
+        new SelectListItem {Text="Papua New Guinea", Value="Papua New Guinea"},
+        new SelectListItem {Text="Paraguay", Value="Paraguay"},
+        new SelectListItem {Text="Peru", Value="Peru"},
+        new SelectListItem {Text="Philippines", Value="Philippines"},
+        new SelectListItem {Text="Pitcairn", Value="Pitcairn"},
+        new SelectListItem {Text="Poland", Value="Poland"},
+        new SelectListItem {Text="Portugal", Value="Portugal"},
+        new SelectListItem {Text="Puerto Rico", Value="Puerto Rico"},
+        new SelectListItem {Text="Qatar", Value="Qatar"},
+        new SelectListItem {Text="Réunion", Value="Réunion"},
+        new SelectListItem {Text="Romania", Value="Romania"},
+        new SelectListItem {Text="Russian Federation", Value="Russian Federation"},
+        new SelectListItem {Text="Rwanda", Value="Rwanda"},
+        new SelectListItem {Text="Saint Barthélemy", Value="Saint Barthélemy"},
+        new SelectListItem {Text="Saint Helena, Ascension and Tristan da Cunha", Value="Saint Helena, Ascension and Tristan da Cunha"},
+        new SelectListItem {Text="Saint Kitts and Nevis", Value="Saint Kitts and Nevis"},
+        new SelectListItem {Text="Saint Lucia", Value="Saint Lucia"},
+        new SelectListItem {Text="Saint Martin (French part)", Value="Saint Martin (French part)"},
+        new SelectListItem {Text="Saint Pierre and Miquelon", Value="Saint Pierre and Miquelon"},
+        new SelectListItem {Text="Saint Vincent and the Grenadines", Value="Saint Vincent and the Grenadines"},
+        new SelectListItem {Text="Samoa", Value="Samoa"},
+        new SelectListItem {Text="San Marino", Value="San Marino"},
+        new SelectListItem {Text="Sao Tome and Principe", Value="Sao Tome and Principe"},
+        new SelectListItem {Text="Saudi Arabia", Value="Saudi Arabia"},
+        new SelectListItem {Text="Senegal", Value="Senegal"},
+        new SelectListItem {Text="Serbia", Value="Serbia"},
+        new SelectListItem {Text="Seychelles", Value="Seychelles"},
+        new SelectListItem {Text="Sierra Leone", Value="Sierra Leone"},
+        new SelectListItem {Text="Singapore", Value="Singapore"},
+        new SelectListItem {Text="Sint Maarten (Dutch part)", Value="Sint Maarten (Dutch part)"},
+        new SelectListItem {Text="Slovakia", Value="Slovakia"},
+        new SelectListItem {Text="Slovenia", Value="Slovenia"},
+        new SelectListItem {Text="Solomon Islands", Value="Solomon Islands"},
+        new SelectListItem {Text="Somalia", Value="Somalia"},
+        new SelectListItem {Text="South Africa", Value="South Africa"},
+        new SelectListItem {Text="South Georgia and the South Sandwich Islands", Value="South Georgia and the South Sandwich Islands"},
+        new SelectListItem {Text="South Sudan", Value="South Sudan"},
+        new SelectListItem {Text="Spain", Value="Spain"},
+        new SelectListItem {Text="Sri Lanka", Value="Sri Lanka"},
+        new SelectListItem {Text="Sudan", Value="Sudan"},
+        new SelectListItem {Text="Suriname", Value="Suriname"},
+        new SelectListItem {Text="Svalbard and Jan Mayen", Value="Svalbard and Jan Mayen"},
+        new SelectListItem {Text="Swaziland", Value="Swaziland"},
+        new SelectListItem {Text="Sweden", Value="Sweden"},
+        new SelectListItem {Text="Switzerland", Value="Switzerland"},
+        new SelectListItem {Text="Syrian Arab Republic", Value="Syrian Arab Republic"},
+        new SelectListItem {Text="Taiwan, Province of China", Value="Taiwan, Province of China"},
+        new SelectListItem {Text="Tajikistan", Value="Tajikistan"},
+        new SelectListItem {Text="Tanzania, United Republic of", Value="Tanzania, United Republic of"},
+        new SelectListItem {Text="Thailand", Value="Thailand"},
+        new SelectListItem {Text="Timor-Leste", Value="Timor-Leste"},
+        new SelectListItem {Text="Togo", Value="Togo"},
+        new SelectListItem {Text="Tokelau", Value="Tokelau"},
+        new SelectListItem {Text="Tonga", Value="Tonga"},
+        new SelectListItem {Text="Trinidad and Tobago", Value="Trinidad and Tobago"},
+        new SelectListItem {Text="Tunisia", Value="Tunisia"},
+        new SelectListItem {Text="Turkey", Value="Turkey"},
+        new SelectListItem {Text="Turkmenistan", Value="Turkmenistan"},
+        new SelectListItem {Text="Turks and Caicos Islands", Value="Turks and Caicos Islands"},
+        new SelectListItem {Text="Tuvalu", Value="Tuvalu"},
+        new SelectListItem {Text="Uganda", Value="Uganda"},
+        new SelectListItem {Text="Ukraine", Value="Ukraine"},
+        new SelectListItem {Text="United Arab Emirates", Value="United Arab Emirates"},
+        new SelectListItem {Text="United Kingdom", Value="United Kingdom"},
+        new SelectListItem {Text="United States", Value="United States"},
+        new SelectListItem {Text="United States Minor Outlying Islands", Value="United States Minor Outlying Islands"},
+        new SelectListItem {Text="Uruguay", Value="Uruguay"},
+        new SelectListItem {Text="Uzbekistan", Value="Uzbekistan"},
+        new SelectListItem {Text="Vanuatu", Value="Vanuatu"},
+        new SelectListItem {Text="Venezuela, Bolivarian Republic of", Value="Venezuela, Bolivarian Republic of"},
+        new SelectListItem {Text="Viet Nam", Value="Viet Nam"},
+        new SelectListItem {Text="Virgin Islands, British", Value="Virgin Islands, British"},
+        new SelectListItem {Text="Virgin Islands, U.S.", Value="Virgin Islands, U.S."},
+        new SelectListItem {Text="Wallis and Futuna", Value="Wallis and Futuna"},
+        new SelectListItem {Text="Western Sahara", Value="Western Sahara"},
+        new SelectListItem {Text="Yemen", Value="Yemen"},
+        new SelectListItem {Text="Zambia", Value="Zambia"},
+        new SelectListItem {Text="Zimbabwe", Value="Zimbabwe"}
 
-    <div class="container">
-        <h1>Add a customer</h1>
-        <div class="row">
-            <!-- change below to point to the NewCustomer action in CustomerController-->
-            <form id="contact-form" method="post" action="contact.php" role="form">
+    }, "Value", "Text");
+}
+
+<div class="container">
+    <br /><br />
+    <h1>Add a Customer</h1>
+    <h1 style="margin-top:-30px;">______________</h1><br /><br />
+    
+    <div class="row">
+
+
+
+        @using (Html.BeginForm("NewCustomer", "Customer"))
+        {
+            <form>
 
                 <div class="messages"></div>
 
@@ -26,8 +287,8 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_Title">Title *</label>
-                                    <input id="form_Title" type="text" name="title" class="form-control" required="required" data-error="Title is required.">
+                                    @Html.Label("Title")
+                                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -35,22 +296,23 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_name">Firstname *</label>
-                                    <input id="form_name" type="text" name="name" class="form-control" required="required" data-error="Firstname is required.">
+                                    @Html.Label("First Name")
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_lastname">Last Name *</label>
-                                    <input id="form_lastname" type="text" name="surname" class="form-control" required="required" data-error="Last Name is required.">
+                                    @Html.Label("Last Name")
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_Address">Address *</label>
-                                    <input id="form_Address" type="text" name="Address" class="form-control" required="required" data-error="Address is required.">
+                                    @Html.Label("Address")
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -59,285 +321,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_City">City *</label>
-                                    <input id="form_City" type="text" name="city" class="form-control" required="required" data-error="City is required.">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
 
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="form_Region">Region *</label>
-                                    <input id="form_Region" type="text" name="region" class="form-control" required="required" data-error="Region is required.">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="form_PostalCode">Postal Code *</label>
-                                    <input id="form_PostalCode" type="text" name="PostalCode" class="form-control" required="required" data-error="PostalCode is required.">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="form_Country">Select Country *</label>
-
-                                    <select class="form-control" type="text" name="Country" id="form_Country" required="required" data-error="Country is required.">
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AX">Åland Islands</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AS">American Samoa</option>
-                                        <option value="AD">Andorra</option>
-                                        <option value="AO">Angola</option>
-                                        <option value="AI">Anguilla</option>
-                                        <option value="AQ">Antarctica</option>
-                                        <option value="AG">Antigua and Barbuda</option>
-                                        <option value="AR">Argentina</option>
-                                        <option value="AM">Armenia</option>
-                                        <option value="AW">Aruba</option>
-                                        <option value="AU">Australia</option>
-                                        <option value="AT">Austria</option>
-                                        <option value="AZ">Azerbaijan</option>
-                                        <option value="BS">Bahamas</option>
-                                        <option value="BH">Bahrain</option>
-                                        <option value="BD">Bangladesh</option>
-                                        <option value="BB">Barbados</option>
-                                        <option value="BY">Belarus</option>
-                                        <option value="BE">Belgium</option>
-                                        <option value="BZ">Belize</option>
-                                        <option value="BJ">Benin</option>
-                                        <option value="BM">Bermuda</option>
-                                        <option value="BT">Bhutan</option>
-                                        <option value="BO">Bolivia, Plurinational State of</option>
-                                        <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                                        <option value="BA">Bosnia and Herzegovina</option>
-                                        <option value="BW">Botswana</option>
-                                        <option value="BV">Bouvet Island</option>
-                                        <option value="BR">Brazil</option>
-                                        <option value="IO">British Indian Ocean Territory</option>
-                                        <option value="BN">Brunei Darussalam</option>
-                                        <option value="BG">Bulgaria</option>
-                                        <option value="BF">Burkina Faso</option>
-                                        <option value="BI">Burundi</option>
-                                        <option value="KH">Cambodia</option>
-                                        <option value="CM">Cameroon</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="CV">Cape Verde</option>
-                                        <option value="KY">Cayman Islands</option>
-                                        <option value="CF">Central African Republic</option>
-                                        <option value="TD">Chad</option>
-                                        <option value="CL">Chile</option>
-                                        <option value="CN">China</option>
-                                        <option value="CX">Christmas Island</option>
-                                        <option value="CC">Cocos (Keeling) Islands</option>
-                                        <option value="CO">Colombia</option>
-                                        <option value="KM">Comoros</option>
-                                        <option value="CG">Congo</option>
-                                        <option value="CD">Congo, the Democratic Republic of the</option>
-                                        <option value="CK">Cook Islands</option>
-                                        <option value="CR">Costa Rica</option>
-                                        <option value="CI">Côte d'Ivoire</option>
-                                        <option value="HR">Croatia</option>
-                                        <option value="CU">Cuba</option>
-                                        <option value="CW">Curaçao</option>
-                                        <option value="CY">Cyprus</option>
-                                        <option value="CZ">Czech Republic</option>
-                                        <option value="DK">Denmark</option>
-                                        <option value="DJ">Djibouti</option>
-                                        <option value="DM">Dominica</option>
-                                        <option value="DO">Dominican Republic</option>
-                                        <option value="EC">Ecuador</option>
-                                        <option value="EG">Egypt</option>
-                                        <option value="SV">El Salvador</option>
-                                        <option value="GQ">Equatorial Guinea</option>
-                                        <option value="ER">Eritrea</option>
-                                        <option value="EE">Estonia</option>
-                                        <option value="ET">Ethiopia</option>
-                                        <option value="FK">Falkland Islands (Malvinas)</option>
-                                        <option value="FO">Faroe Islands</option>
-                                        <option value="FJ">Fiji</option>
-                                        <option value="FI">Finland</option>
-                                        <option value="FR">France</option>
-                                        <option value="GF">French Guiana</option>
-                                        <option value="PF">French Polynesia</option>
-                                        <option value="TF">French Southern Territories</option>
-                                        <option value="GA">Gabon</option>
-                                        <option value="GM">Gambia</option>
-                                        <option value="GE">Georgia</option>
-                                        <option value="DE">Germany</option>
-                                        <option value="GH">Ghana</option>
-                                        <option value="GI">Gibraltar</option>
-                                        <option value="GR">Greece</option>
-                                        <option value="GL">Greenland</option>
-                                        <option value="GD">Grenada</option>
-                                        <option value="GP">Guadeloupe</option>
-                                        <option value="GU">Guam</option>
-                                        <option value="GT">Guatemala</option>
-                                        <option value="GG">Guernsey</option>
-                                        <option value="GN">Guinea</option>
-                                        <option value="GW">Guinea-Bissau</option>
-                                        <option value="GY">Guyana</option>
-                                        <option value="HT">Haiti</option>
-                                        <option value="HM">Heard Island and McDonald Islands</option>
-                                        <option value="VA">Holy See (Vatican City State)</option>
-                                        <option value="HN">Honduras</option>
-                                        <option value="HK">Hong Kong</option>
-                                        <option value="HU">Hungary</option>
-                                        <option value="IS">Iceland</option>
-                                        <option value="IN">India</option>
-                                        <option value="ID">Indonesia</option>
-                                        <option value="IR">Iran, Islamic Republic of</option>
-                                        <option value="IQ">Iraq</option>
-                                        <option value="IE">Ireland</option>
-                                        <option value="IM">Isle of Man</option>
-                                        <option value="IL">Israel</option>
-                                        <option value="IT">Italy</option>
-                                        <option value="JM">Jamaica</option>
-                                        <option value="JP">Japan</option>
-                                        <option value="JE">Jersey</option>
-                                        <option value="JO">Jordan</option>
-                                        <option value="KZ">Kazakhstan</option>
-                                        <option value="KE">Kenya</option>
-                                        <option value="KI">Kiribati</option>
-                                        <option value="KP">Korea, Democratic People's Republic of</option>
-                                        <option value="KR">Korea, Republic of</option>
-                                        <option value="KW">Kuwait</option>
-                                        <option value="KG">Kyrgyzstan</option>
-                                        <option value="LA">Lao People's Democratic Republic</option>
-                                        <option value="LV">Latvia</option>
-                                        <option value="LB">Lebanon</option>
-                                        <option value="LS">Lesotho</option>
-                                        <option value="LR">Liberia</option>
-                                        <option value="LY">Libya</option>
-                                        <option value="LI">Liechtenstein</option>
-                                        <option value="LT">Lithuania</option>
-                                        <option value="LU">Luxembourg</option>
-                                        <option value="MO">Macao</option>
-                                        <option value="MK">Macedonia, the former Yugoslav Republic of</option>
-                                        <option value="MG">Madagascar</option>
-                                        <option value="MW">Malawi</option>
-                                        <option value="MY">Malaysia</option>
-                                        <option value="MV">Maldives</option>
-                                        <option value="ML">Mali</option>
-                                        <option value="MT">Malta</option>
-                                        <option value="MH">Marshall Islands</option>
-                                        <option value="MQ">Martinique</option>
-                                        <option value="MR">Mauritania</option>
-                                        <option value="MU">Mauritius</option>
-                                        <option value="YT">Mayotte</option>
-                                        <option value="MX">Mexico</option>
-                                        <option value="FM">Micronesia, Federated States of</option>
-                                        <option value="MD">Moldova, Republic of</option>
-                                        <option value="MC">Monaco</option>
-                                        <option value="MN">Mongolia</option>
-                                        <option value="ME">Montenegro</option>
-                                        <option value="MS">Montserrat</option>
-                                        <option value="MA">Morocco</option>
-                                        <option value="MZ">Mozambique</option>
-                                        <option value="MM">Myanmar</option>
-                                        <option value="NA">Namibia</option>
-                                        <option value="NR">Nauru</option>
-                                        <option value="NP">Nepal</option>
-                                        <option value="NL">Netherlands</option>
-                                        <option value="NC">New Caledonia</option>
-                                        <option value="NZ">New Zealand</option>
-                                        <option value="NI">Nicaragua</option>
-                                        <option value="NE">Niger</option>
-                                        <option value="NG">Nigeria</option>
-                                        <option value="NU">Niue</option>
-                                        <option value="NF">Norfolk Island</option>
-                                        <option value="MP">Northern Mariana Islands</option>
-                                        <option value="NO">Norway</option>
-                                        <option value="OM">Oman</option>
-                                        <option value="PK">Pakistan</option>
-                                        <option value="PW">Palau</option>
-                                        <option value="PS">Palestinian Territory, Occupied</option>
-                                        <option value="PA">Panama</option>
-                                        <option value="PG">Papua New Guinea</option>
-                                        <option value="PY">Paraguay</option>
-                                        <option value="PE">Peru</option>
-                                        <option value="PH">Philippines</option>
-                                        <option value="PN">Pitcairn</option>
-                                        <option value="PL">Poland</option>
-                                        <option value="PT">Portugal</option>
-                                        <option value="PR">Puerto Rico</option>
-                                        <option value="QA">Qatar</option>
-                                        <option value="RE">Réunion</option>
-                                        <option value="RO">Romania</option>
-                                        <option value="RU">Russian Federation</option>
-                                        <option value="RW">Rwanda</option>
-                                        <option value="BL">Saint Barthélemy</option>
-                                        <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-                                        <option value="KN">Saint Kitts and Nevis</option>
-                                        <option value="LC">Saint Lucia</option>
-                                        <option value="MF">Saint Martin (French part)</option>
-                                        <option value="PM">Saint Pierre and Miquelon</option>
-                                        <option value="VC">Saint Vincent and the Grenadines</option>
-                                        <option value="WS">Samoa</option>
-                                        <option value="SM">San Marino</option>
-                                        <option value="ST">Sao Tome and Principe</option>
-                                        <option value="SA">Saudi Arabia</option>
-                                        <option value="SN">Senegal</option>
-                                        <option value="RS">Serbia</option>
-                                        <option value="SC">Seychelles</option>
-                                        <option value="SL">Sierra Leone</option>
-                                        <option value="SG">Singapore</option>
-                                        <option value="SX">Sint Maarten (Dutch part)</option>
-                                        <option value="SK">Slovakia</option>
-                                        <option value="SI">Slovenia</option>
-                                        <option value="SB">Solomon Islands</option>
-                                        <option value="SO">Somalia</option>
-                                        <option value="ZA">South Africa</option>
-                                        <option value="GS">South Georgia and the South Sandwich Islands</option>
-                                        <option value="SS">South Sudan</option>
-                                        <option value="ES">Spain</option>
-                                        <option value="LK">Sri Lanka</option>
-                                        <option value="SD">Sudan</option>
-                                        <option value="SR">Suriname</option>
-                                        <option value="SJ">Svalbard and Jan Mayen</option>
-                                        <option value="SZ">Swaziland</option>
-                                        <option value="SE">Sweden</option>
-                                        <option value="CH">Switzerland</option>
-                                        <option value="SY">Syrian Arab Republic</option>
-                                        <option value="TW">Taiwan, Province of China</option>
-                                        <option value="TJ">Tajikistan</option>
-                                        <option value="TZ">Tanzania, United Republic of</option>
-                                        <option value="TH">Thailand</option>
-                                        <option value="TL">Timor-Leste</option>
-                                        <option value="TG">Togo</option>
-                                        <option value="TK">Tokelau</option>
-                                        <option value="TO">Tonga</option>
-                                        <option value="TT">Trinidad and Tobago</option>
-                                        <option value="TN">Tunisia</option>
-                                        <option value="TR">Turkey</option>
-                                        <option value="TM">Turkmenistan</option>
-                                        <option value="TC">Turks and Caicos Islands</option>
-                                        <option value="TV">Tuvalu</option>
-                                        <option value="UG">Uganda</option>
-                                        <option value="UA">Ukraine</option>
-                                        <option value="AE">United Arab Emirates</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="US">United States</option>
-                                        <option value="UM">United States Minor Outlying Islands</option>
-                                        <option value="UY">Uruguay</option>
-                                        <option value="UZ">Uzbekistan</option>
-                                        <option value="VU">Vanuatu</option>
-                                        <option value="VE">Venezuela, Bolivarian Republic of</option>
-                                        <option value="VN">Viet Nam</option>
-                                        <option value="VG">Virgin Islands, British</option>
-                                        <option value="VI">Virgin Islands, U.S.</option>
-                                        <option value="WF">Wallis and Futuna</option>
-                                        <option value="EH">Western Sahara</option>
-                                        <option value="YE">Yemen</option>
-                                        <option value="ZM">Zambia</option>
-                                        <option value="ZW">Zimbabwe</option>
-                                    </select>
-
+                                    @Html.Label("City")
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -345,8 +331,37 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="form_Phone">Phone *</label>
-                                    <input id="form_Phone" type="text" name="Phone" class="form-control" required="required" data-error="Phone is required.">
+
+                                    @Html.Label("Region")
+                                    @Html.TextBoxFor(m => m.Region, new { @class = "form-control" })
+
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+
+                                    @Html.Label("Postal Code")
+                                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Country")
+                                    @Html.DropDownListFor(m => m.Country, selectList, new { @class = "form-control" })
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Phone")
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -363,43 +378,15 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="col-md-6" style="align-self:flex-start;">
-                                <input type="submit" class="btn btn-success btn-lg btn-send" value="Add">
-                            </div>
-
-
-
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#form_DateOfBirth').datetimepicker({
-                                        format: 'LT'
-                                    });
-                                });
-                            </script>
-
-
-
-
-
-
-
-
                         </div>
 
+                        <input type="submit" class="btn btn-success btn-lg btn-send" value="Add">
+
             </form>
-        </div>
+        }
+    </div>    
 
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    <script src="contact.js"></script>
-</body>
-</html>
+
+
+</div>
