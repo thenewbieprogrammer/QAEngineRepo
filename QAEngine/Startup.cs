@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,10 @@ using MediatR;
 using MediatR.Pipeline;
 using System.Reflection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+
+using System.Net.NetworkInformation;
+using QAEngine.Web.Infrastructure.mediatR;
+using QAEngine.Application.Customers.Command;
 
 namespace QAEngine.Web
 {
@@ -30,6 +35,9 @@ namespace QAEngine.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
+
             //QAEngine.Web DB Context
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
@@ -47,9 +55,12 @@ namespace QAEngine.Web
 
             services.AddMvc();
 
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-            // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+
+
+            // ADD MEDIATR
+
+            services.AddMediatR();
+            services.AddMediatR(typeof(CreateCustomerCommand).Assembly, typeof(CreateCustomerCommandHandler).Assembly);
 
         }
 

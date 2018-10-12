@@ -8,7 +8,7 @@ using QAEngine.Application.Customers.Command;
 using QAEngine.Application.Customers.Models;
 using QAEngine.Application.Customers.Query;
 using Microsoft.AspNetCore.Authorization;
-
+using MediatR;
 
 
 namespace QAEngine.Web.Controllers
@@ -17,6 +17,7 @@ namespace QAEngine.Web.Controllers
 
     public class CustomerController : BaseController
     {
+        
         [Authorize]
         public IActionResult CustomerIndex()
         {
@@ -50,6 +51,8 @@ namespace QAEngine.Web.Controllers
         //noteToSelf = FromForm means from the bloody form not [FromBody]
         public async Task<IActionResult> NewCustomer([FromForm]CreateCustomerCommand command)
         {
+
+            
             return Ok(await Mediator.Send(command));
             
         }
