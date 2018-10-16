@@ -10,7 +10,7 @@ using QAEngine.Persistence;
 namespace QAEngine.Persistence.Migrations
 {
     [DbContext(typeof(QAEngineDbContext))]
-    [Migration("20181010113834_InitialMigration")]
+    [Migration("20181015111645_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,10 +25,10 @@ namespace QAEngine.Persistence.Migrations
                 {
                     b.Property<string>("CustomerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("CustomerID")
-                        .HasMaxLength(8);
+                        .HasColumnName("CustomerID");
 
-                    b.Property<DateTime>("AccountCreated");
+                    b.Property<DateTime>("AccountCreated")
+                        .HasColumnName("AccountCreated");
 
                     b.Property<string>("Address")
                         .HasColumnName("Address")
@@ -40,26 +40,26 @@ namespace QAEngine.Persistence.Migrations
 
                     b.Property<string>("Country")
                         .HasColumnName("Country")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnName("DateOfBirth");
 
                     b.Property<string>("FirstName")
                         .HasColumnName("FirstName")
-                        .HasMaxLength(10);
+                        .HasMaxLength(20);
 
                     b.Property<string>("LastName")
                         .HasColumnName("LastName")
-                        .HasMaxLength(10);
+                        .HasMaxLength(20);
 
                     b.Property<string>("Phone")
                         .HasColumnName("Phone")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<string>("PostalCode")
                         .HasColumnName("PostalCode")
-                        .HasMaxLength(6);
+                        .HasMaxLength(10);
 
                     b.Property<string>("Region")
                         .HasColumnName("Region")

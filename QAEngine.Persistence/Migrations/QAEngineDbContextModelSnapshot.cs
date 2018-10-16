@@ -23,10 +23,10 @@ namespace QAEngine.Persistence.Migrations
                 {
                     b.Property<string>("CustomerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("CustomerID")
-                        .HasMaxLength(8);
+                        .HasColumnName("CustomerID");
 
-                    b.Property<DateTime>("AccountCreated");
+                    b.Property<DateTime>("AccountCreated")
+                        .HasColumnName("AccountCreated");
 
                     b.Property<string>("Address")
                         .HasColumnName("Address")
@@ -38,26 +38,26 @@ namespace QAEngine.Persistence.Migrations
 
                     b.Property<string>("Country")
                         .HasColumnName("Country")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnName("DateOfBirth");
 
                     b.Property<string>("FirstName")
                         .HasColumnName("FirstName")
-                        .HasMaxLength(10);
+                        .HasMaxLength(20);
 
                     b.Property<string>("LastName")
                         .HasColumnName("LastName")
-                        .HasMaxLength(10);
+                        .HasMaxLength(20);
 
                     b.Property<string>("Phone")
                         .HasColumnName("Phone")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<string>("PostalCode")
                         .HasColumnName("PostalCode")
-                        .HasMaxLength(6);
+                        .HasMaxLength(10);
 
                     b.Property<string>("Region")
                         .HasColumnName("Region")

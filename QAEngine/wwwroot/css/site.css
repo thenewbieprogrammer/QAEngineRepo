@@ -33,3 +33,8 @@
         display: none;
     }
 }
+
+.easy-autocomplete-container {
+    top: 35px;
+}
+

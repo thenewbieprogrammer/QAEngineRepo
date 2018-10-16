@@ -25,35 +25,59 @@ namespace QAEngine.Web.Controllers
         }
 
         [HttpGet()]
-        public Task<List<CustomerListModel>> ViewCustomers()
+        public async Task<IActionResult> ViewCustomers()
         {
-            return Mediator.Send(new GetCustomerListQuery());
+
+            List<CustomerListModel> CustomerObj = await Mediator.Send(new GetCustomerListQuery());
+            return View(CustomerObj);
+        }
+
+        public IActionResult FindCustomer()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> FindCustomer([FromForm] GetCustomerModelQuery query)
+        {
+            if(query.Id == null)
+            {
+                throw new UnauthorizedAccessException();
+
+            }
+            await FindCustomer(query.Id);
+            return View();
         }
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> FindACustomer(string id)
+        public async Task<IActionResult> FindCustomer(string id)
         {
-            return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = id }));
+            var CustomerObj = await Mediator.Send(new GetCustomerModelQuery { Id = id });
+            return View(CustomerObj);
+            //return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = findaCustomer }));
+
         }
 
         // I don't know if the below action result actually does anything of significance. Find out if you can return a view whilst sending a STATUS OK 200 CODE!!
         // Below is an example of "NewCustomer" action with a view and a task. 
-        [Authorize]
+
         public IActionResult NewCustomer()
         {
 
             return View();
         }
 
-        [Authorize]
+
         [HttpPost]
         //noteToSelf = FromForm means from the bloody form not [FromBody]
         public async Task<IActionResult> NewCustomer([FromForm]CreateCustomerCommand command)
         {
-
-            
-            return Ok(await Mediator.Send(command));
+            //sets the accountCreation before it is populated at database level
+            command.AccountCreated = DateTime.Now;
+            Ok(await Mediator.Send(command));
+            return RedirectToAction("ViewCustomers");
             
         }
 

@@ -26,7 +26,15 @@ namespace QAEngine.Application.Customers.Query
                 new CustomerListModel
                 {
                     Id = c.CustomerId,
-                    Name = c.FirstName + " " + c.LastName
+                    Title = c.Title,
+                    Name = c.FirstName + " " + c.LastName,
+                    Address = c.Address,
+                    PostalCode = c.PostalCode,
+                    Country = c.Country,
+                    City = c.City,
+                    Phone = c.Phone,
+                    Region = c.Region,
+                    DateOfBirth = c.DateOfBirth
                 }).ToListAsync(cancellationToken);
         }
 
