@@ -16,13 +16,16 @@
 <div>
     @using (Html.BeginForm("ViewCustomers", "Customer", FormMethod.Get))
     {
+    <form>
+        <td><button class="btn btn-default btn-primary">Edit</button></td>
+        @*<td><button class="btn btn-default btn-warning">Update</button></td>
+        <td><button class="btn btn-default btn-danger">Delete</button></td>*@
+
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">@Html.Label("Id")</th>
                     <th scope="col">@Html.Label("Title")</th>
                     <th scope="col">@Html.Label("Name")</th>
-                    <th scope="col">@Html.Label("Date of Birth")</th>
                     <th scope="col">@Html.Label("Address")</th>
                     <th scope="col">@Html.Label("City")</th>
                     <th scope="col">@Html.Label("Region")</th>
@@ -33,26 +36,34 @@
             </thead>
             <tbody>
 
-            @foreach (var customer in Model)
+                @foreach (var customer in Model)
                 {
-                <tr>
-                    <td>@Html.DisplayFor(m=> customer.Id)</td>
-                    <td>@Html.DisplayFor(m => customer.Title)</td>
-                    <td>@Html.DisplayFor(m => customer.Name)</td>
-                    <td>@Html.DisplayFor(m => customer.DateOfBirth)</td>
-                    <td>@Html.DisplayFor(m => customer.Address)</td>
-                    <td>@Html.DisplayFor(m => customer.City)</td>
-                    <td>@Html.DisplayFor(m => customer.Region)</td>
-                    <td>@Html.DisplayFor(m => customer.Country)</td>
-                    <td>@Html.DisplayFor(m => customer.PostalCode)</td>
-                    <td>@Html.DisplayFor(m => customer.Phone)</td>
 
-                </tr>
+                    <tr>
+
+                        <td>@Html.DisplayFor(m => customer.Title)</td>
+                        <td>@Html.DisplayFor(m => customer.Name)</td>
+                        <td>@Html.DisplayFor(m => customer.Address)</td>
+                        <td>@Html.DisplayFor(m => customer.City)</td>
+                        <td>@Html.DisplayFor(m => customer.Region)</td>
+                        <td>@Html.DisplayFor(m => customer.Country)</td>
+                        <td>@Html.DisplayFor(m => customer.PostalCode)</td>
+                        <td>@Html.DisplayFor(m => customer.Phone)</td>
+
+
+
+                    </tr>
+
                 }
 
 
             </tbody>
         </table>
+
+
+
+    </form>
     }
+
 </div>
 

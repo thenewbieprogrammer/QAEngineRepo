@@ -7,8 +7,9 @@ using QAEngine.Web.Infrastructure;
 using QAEngine.Application.Customers.Command;
 using QAEngine.Application.Customers.Models;
 using QAEngine.Application.Customers.Query;
+using QAEngine.Application.Exceptions;
 using Microsoft.AspNetCore.Authorization;
-using MediatR;
+using AutoMapper;
 
 
 namespace QAEngine.Web.Controllers
@@ -17,6 +18,12 @@ namespace QAEngine.Web.Controllers
 
     public class CustomerController : BaseController
     {
+        //private readonly IMapper _mapper;
+        //public CustomerController(IMapper mapper)
+        //{
+        //    // implement automapper from view models to models ==> Further encapsulation.
+        //    _mapper = mapper;
+        //}
         
         [Authorize]
         public IActionResult CustomerIndex()
@@ -29,6 +36,7 @@ namespace QAEngine.Web.Controllers
         {
 
             List<CustomerListModel> CustomerObj = await Mediator.Send(new GetCustomerListQuery());
+
             return View(CustomerObj);
         }
 
@@ -38,26 +46,40 @@ namespace QAEngine.Web.Controllers
         }
 
 
+
         [HttpPost]
         public async Task<IActionResult> FindCustomer([FromForm] GetCustomerModelQuery query)
         {
-            if(query.Id == null)
+            if (query.Id == null)
             {
-                throw new UnauthorizedAccessException();
+                return BadRequest();
 
             }
-            await FindCustomer(query.Id);
-            return View();
-        }
+            try
+            {
+                await FindCustomer(query.Id);
+            }
+            catch (NotFoundException e)
+            {
+                if (e.Message != null)
+                {
+                    Json(e.Message);
+                }
 
+
+            }
+
+
+            return View();
+
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> FindCustomer(string id)
         {
             var CustomerObj = await Mediator.Send(new GetCustomerModelQuery { Id = id });
+            //await DeleteCustomer(id);
             return View(CustomerObj);
-            //return Ok(await Mediator.Send(new GetCustomerModelQuery { Id = findaCustomer }));
-
         }
 
         // I don't know if the below action result actually does anything of significance. Find out if you can return a view whilst sending a STATUS OK 200 CODE!!
@@ -82,22 +104,22 @@ namespace QAEngine.Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCustomerDetails(string id, [FromBody]UpdateCustomerCommand command)
+        public async Task<IActionResult> UpdateCustomerDetails(string id, [FromForm]UpdateCustomerCommand command)
         {
             if (command == null || command.Id != id)
             {
                 return BadRequest();
             }
-            
 
             return Ok(await Mediator.Send(command));
+            //return View();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(string id)
         {
             await Mediator.Send(new DeleteCustomerCommand { Id = id });
-            return NoContent();
+            return RedirectToAction("ViewCustomers");
         }
 
     }

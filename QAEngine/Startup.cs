@@ -16,7 +16,7 @@ using MediatR;
 using MediatR.Pipeline;
 using System.Reflection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
-
+using QAEngine.Web.Infrastructure.automapper;
 using System.Net.NetworkInformation;
 using QAEngine.Web.Infrastructure.mediatR;
 using QAEngine.Application.Customers.Command;
@@ -55,7 +55,15 @@ namespace QAEngine.Web
 
             services.AddMvc();
 
+            //ADD AutoMapper
 
+            var config = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new MappingProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
 
             // ADD MEDIATR
 
